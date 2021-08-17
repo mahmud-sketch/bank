@@ -5,23 +5,44 @@
 // });
 
 
+function balance_calc(input_id, show, balance_show) {
+
+    let amount = document.getElementById(input_id).value;
+
+    amount = parseInt(amount);
+
+    document.getElementById(input_id).value = '';
+
+    let screen_show = document.getElementById(show).innerText;
+
+    screen_show = parseInt(screen_show);
+
+    screen_show += amount;
+
+    document.getElementById(show).innerText = screen_show;
+
+    let balance = document.getElementById(balance_show).innerText;
+
+    balance = parseInt(balance);
+
+    if (input_id == 'deposit-amount') {
+        balance += amount;
+    } else {
+        balance -= amount;
+    }
+
+    document.getElementById(balance_show).innerText = balance;
+
+}
 document.getElementById('deposit-button').addEventListener('click', function () {
 
-    let deposit_amount = document.getElementById('deposit-amount').value;
+    balance_calc('deposit-amount', 'deposit-show', 'balance-show');
 
-    deposit_amount = parseInt(deposit_amount);
+});
 
-    document.getElementById('deposit-amount').innerText = '';
+document.getElementById('withdraw-button').addEventListener('click', function () {
 
-    document.getElementById('deposit-show').innerText = deposit_amount;
-
-    let deposit_balance = document.getElementById('balance-show').innerText;
-
-    deposit_balance = parseInt(deposit_balance);
-
-    deposit_balance += deposit_amount;
-
-    document.getElementById('balance-show').innerText = deposit_balance;
+    balance_calc('withdraw-amount', 'withdraw-show', 'balance-show');
 
 });
 
