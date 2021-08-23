@@ -9,6 +9,16 @@ function balance_calc(input_id, show, balance_show) {
 
     let amount = document.getElementById(input_id).value;
 
+
+    console.log(amount);
+
+    console.log(typeof amount);
+
+    if (amount < 0 || amount == NaN || amount == 'string') {
+        alert('enter a positive amount');
+        document.getElementById(input_id).value = '';
+        return;
+    }
     amount = parseInt(amount);
 
     document.getElementById(input_id).value = '';
